@@ -9,7 +9,6 @@ use App\Models\User;
 use \stdClass;
 use Illuminate\Support\Facades\Hash;
 
-use App\Models\Log;
 
 class AuthController extends Controller
 {
@@ -18,8 +17,6 @@ class AuthController extends Controller
     {
 
         if(empty($request->only('email', 'password'))) {
-
-
 
             return response()->json([
             'status' => "404",
@@ -41,8 +38,6 @@ class AuthController extends Controller
                     $user = User::where('email', $request['email'])->firstOrFail();
 
                     $token = $user->createToken('auth_token')->plainTextToken;
-
-
 
                     return response()->json([
                         'status' => "202",

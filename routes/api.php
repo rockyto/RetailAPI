@@ -22,8 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', [AuthController::class, 'login']);
 
 
+
 Route::middleware(['auth:sanctum'])->group(function (){
 
     Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('consultar', [ConsultasController::class, 'index']);
+    Route::post('tiendas', [ConsultasController::class, 'ventasTiendas']);
 
 });
